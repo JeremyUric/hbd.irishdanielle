@@ -168,9 +168,10 @@ function openTab(evt, tabName) {
   if (tabName === 'Irish') {
     if (!document.getElementById('birthdayContent').style.display || document.getElementById('birthdayContent').style.display === 'none') {
       alert('Tapusin mo muna questions :3');
+      location.reload(); // Refresh the page
       return;
     }
-    setTimeout(animateMessages, 2000); // Start animation after 7 seconds when "Friends" tab is opened
+    setTimeout(animateMessages, 7000); // Start animation after 7 seconds when "Friends" tab is opened
   }
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " w3-light-grey";
