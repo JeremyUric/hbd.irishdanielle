@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HBD Irish!</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body, h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: #333;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  letter-spacing: 6px;
+}
+h2.lavishly-yours {
+  font-family: 'Lavishly Yours', sans-serif;
+  font-weight: normal;
+  color: #333;
+  font-size: 42px; /* Make the "happy birthday" a little bit bigger */
+  margin-bottom: -20px; /* Make it slightly nearer to "IRISH DANIELLE" */
+}
+h2.gotham {
+  font-family: 'Gotham', sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+.w3-row-padding img {
+  margin-bottom: 12px;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.message-box {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 30px;
+  font-family: 'Product Sans', sans-serif; /* Change font to Product Sans */
+  text-align: left; /* Make the message left-aligned */
+  opacity: 0; /* Initially hide the messages */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for showing messages */
+}
+.message-box::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid #f0f0f0;
+}
+.message-box p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px; /* Make the message font slightly bigger */
+  line-height: 1.6;
+  font-weight: normal; /* Make the message text not bold */
+}
+.message-box .sender {
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: right;
+  color: #555;
+}
+@media (max-width: 600px) {
+  .message-box {
+    margin-left: 10px;
+    margin-right: 30px;
+    border-radius: 15px;
+    padding: 15px;
+  }
+  .message-box::before {
+    top: 8px;
+    left: -15px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 15px solid #f0f0f0;
+  }
+  .message-box p {
+    font-size: 14px; /* Adjust font size for mobile view */
+  }
+}
+.w3-bar {
+  border-radius: 12px; /* Make the border of the row of buttons rounded */
+}
+.w3-bar .w3-bar-item {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 12px; /* Make the buttons rounded */
+}
+.w3-bar .w3-bar-item:hover {
+  background-color: #ddd;
+}
+.w3-bar .w3-light-grey {
+  background-color: #f0f0f0;
+}
+footer {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+  color: #555;
+}
+.rounded-gif {
+  border-radius: 12px;
+}
+button {
+  border-radius: 12px; /* Make all buttons rounded */
+}
+#birthdayGif img {
+  width: 100%;
+  max-width: 300px; /* Set a maximum width for the GIF */
+  height: auto; /* Maintain aspect ratio */
+}
+@media (max-width: 600px) {
+  #birthdayGif img {
+    max-width: 80%; /* Ensure the GIF fits within the screen on mobile */
+    margin: 40px; /* Add 40px margin around the GIF */
+  }
+}
+.text-under-spotify {
+  font-weight: normal; /* Make the text not bold */
+  text-align: justify; /* Justify the text */
+  margin: 20px 40px; /* Add margin around the text */
+}
+.gotham-black {
+  font-family: 'Century Gothic', sans-serif;
+  font-weight: 900;
+}
+#footer {
+  font-size: 10px; /* Adjust font size to be very small */
+  color: #555; /* Optional: Adjust the color if needed */
+  text-align: center; /* Optional: Center align the text */
+  padding: 20px; /* Optional: Add padding if needed */
+  background-color: #f0f0f0; /* Optional: Set a background color */
+}
+</style>
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-light-grey", "");
+  }
+  if (tabName === 'Irish') {
+    if (!document.getElementById('birthdayContent').style.display || document.getElementById('birthdayContent').style.display === 'none') {
+      alert('Tapusin mo muna questions :3');
+      return;
+    }
+    setTimeout(animateMessages, 7000); // Start animation after 7 seconds when "Friends" tab is opened
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " w3-light-grey";
+}
+
+function submitSurvey() {
+  document.getElementById('birthdayGif').style.display = 'block'; // Show the GIF
+  document.getElementById('surveyForm').style.display = 'none';
+  document.getElementById('nextButton').style.display = 'block'; // Show the Next button
+}
+
+function showNextContent() {
+  document.getElementById('birthdayGif').style.display = 'none';
+  document.getElementById('nextButton').style.display = 'none';
+  document.getElementById('birthdayContent').style.display = 'block'; // Show the poem content
+  document.getElementById('irishMessage').style.display = 'block';
+}
+
+function showNextQuestion(currentQuestion, nextQuestion, isCorrect) {
+  if (!isCorrect) {
+    var buttons = document.getElementById(currentQuestion).getElementsByClassName('w3-button');
+    for (var i = 0; i < buttons.length; i++) {
+      if (buttons[i].onclick.toString().includes('false')) {
+        buttons[i].style.display = 'none';
+      }
+    }
+    return;
+  }
+  document.getElementById(currentQuestion).style.display = 'none';
+  document.getElementById(nextQuestion).style.display = 'block';
+}
+
+function animateMessages() {
+  var messages = document.getElementsByClassName('message-box');
+  for (let i = 0; i < messages.length; i++) {
+    setTimeout(function() {
+      messages[i].style.opacity = 1;
+    }, i * 3000); // Show each message with a 3-second interval
+  }
+}
+</script>
+</head>
+<body onload="document.getElementById('defaultOpen').click()">
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+<!-- Header -->
+<header class="w3-panel w3-center w3-opacity" style="padding:0px 16px">
+  <h2 class="lavishly-yours">happy birthday</h2>
+  <h1>IRISH DANIELLE!</h1>
+  
+  <div class="w3-padding-32">
+    <div class="w3-bar w3-border">
+      <a href="javascript:void(0)" class="w3-bar-item w3-button tablink w3-light-grey" onclick="openTab(event, 'Happy')" id="defaultOpen">Je</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button tablink" onclick="openTab(event, 'Birthday')">Secret</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button tablink" onclick="openTab(event, 'Irish')">Friends</a>
+    </div>
+  </div>
+</header>
+
+<!-- Tab Content -->
+<div id="Happy" class="tab-content active">
+  <div class="w3-center" style="margin-bottom:128px">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1abeRpm7JUXQPMZjyqHNIF?utm_source=generator&theme=0" width="300" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <p class="text-under-spotify">Happiest 22nd birthday, Irish Danielle! 🥳. First of all, sorry for my ghosting phase. Let’s just say na things were not in my favor nitong mga nakaraan and naging medyo busy rin. Pero enough on all of that muna, i-celebrate muna natin ‘yung special day mo hehe.</p>
+    <p class="text-under-spotify">Thank you for being one of my closest friends kahit na ang weird ko minsan 😭. Thank you sa mga review sessions na minsan hindi na natin napapansin oras kasi ang daldal mo (or ang daldal ko? or both?) HAHAHAHA. Please keep your bubbly personality kasi it’s one of the many things that I love about you. ‘Yung tipong delikado na tayo sa isang subject and super kabado na pero nakukuha pa rin nating tumawa habang nagre-review HAHAHAHA. I also enjoy receiving updates from you, lalo na mga pics ni boleng. In that way, nagiging happy ako kasi kahit hindi ko pa siya nam-meet or naa-alagaan is parang naw-witness ko kung paano siya mag-grow. Alsooo, super happy ako kasi you’re surrounded with people that makes you the happiest. Just keep being with them kasi I’m the happiest kapag nakikita kitang masaya.</p>
+    <p class="text-under-spotify">Last sem na natin and I hope na you’ll let me be a part of your college journey pa rinnn. Ayun lang namann. Enjoy your day and happy birthday ulit!</p>
+    <p class="text-under-spotify" style="text-align: right;">- Je</p>
+    <p class="text-under-spotify" style="font-size: 12px; text-align: justify;">Ps. I’ve noticed na there are times na parang sad ka nitong mga nakaraan. I’m here lang if may problem ka and you want to talk about ittt.</p>
+  </div>
+</div>
+
+<div id="Birthday" class="tab-content">
+  <div class="w3-center" style="margin-bottom:128px">
+    <form id="surveyForm" onsubmit="submitSurvey(); return false;">
+      <div id="question1">
+        <p><label>1. Cute ba ako?</label></p>
+        <p>
+          <button type="button" class="w3-button w3-light-grey w3-border" onclick="showNextQuestion('question1', 'question2', true)">Yes</button>
+          <button type="button" class="w3-button w3-light-grey w3-border" onclick="showNextQuestion('question1', 'question2', false)">No</button>
+        </p>
+      </div>
+      <div id="question2" style="display:none;">
+        <p><label>2. How old are you?</label></p>
+        <p>
+          <button type="button" class="w3-button w3-light-grey w3-border" onclick="showNextQuestion('question2', 'question3', false)">22</button>
+          <button type="button" class="w3-button w3-light-grey w3-border" onclick="showNextQuestion('question2', 'question3', true)">70</button>
+        </p>
+      </div>
+      <div id="question3" style="display:none;">
+        <p><label>3. Take a chance with me?</label></p>
+        <p>
+          <button type="button" class="w3-button w3-light-grey w3-border" onclick="submitSurvey()">Yes</button>
+          <button type="button" class="w3-button w3-light-grey w3-border" onclick="showNextQuestion('question3', '', false)">No</button>
+        </p>
+      </div>
+    </form>
+    <div id="birthdayGif" style="display:none;">
+      <img class="rounded-gif" src="https://media1.giphy.com/media/AXxFKwopNeF5HAXCIe/giphy.gif?cid=6c09b9522oletp2mjk2ctltekt53mdx0zus2dubnmabxgkj7&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Birthday GIF">
+    </div>
+    <div id="nextButton" style="display:none; text-align:center; margin-top:20px;">
+      <button class="w3-button w3-light-grey w3-border" onclick="showNextContent()">Next</button>
+    </div>
+    <div id="birthdayContent" style="display:none;">
+      <h2 class="gotham-black">SIX GERBERAS</h2>
+      <p>It was almost two years<br>
+      When I first saw you<br>
+      All of my plans<br>
+      Suddenly became for two<br><br>
+
+      From simple days to hectic nights<br>
+      We’ve faced what life can brew<br>
+      My college journey’s been the best<br>
+      Just because I am with you<br><br>
+
+      Even as you grow a year older<br>
+      One thing will remain<br>
+      I’ll always be with you<br>
+      Through sunshine and through rain<br><br>
+
+      I’ll be the Katinko<br>
+      To all of your headaches<br>
+      And be your home<br>
+      When your heart breaks<br><br>
+
+      I’ll lift you up when you’re weary<br>
+      And cheer you up when you’re down<br>
+      With late-night talks and cramming<br>
+      We’ll turn it all around<br><br>
+
+      Through all the years that follow<br>
+      And paths we've yet to see<br>
+      Worry not<br>
+      You’ll always have me</p>
+    </div>
+  </div>
+</div>
+
+<div id="Irish" class="tab-content">
+  <div class="w3-center" style="margin-bottom:128px">
+    <div id="irishMessage" style="display:none;">
+      <h2 class="gotham">Messages from your Close Friends</h2>
+    </div>
+    <div class="message-box">
+      <p>Happiest Birthday, my dearest sister! I always got your back at ang kaaway mo kaaway ko na rin eme HAHAHHAAHA. Wishing you all the happiness and nawa'y matupad lahat ng dreams natin sa bohai and to more biglaang gala with you. Love you bff mwaaa!! 🥰❤️</p>
+      <p class="sender">- Jess</p>
+    </div>
+    <div class="message-box">
+      <p>Helloooo atehhhh ko!! Happiestttt Birthday to youuuuu!!🥳🎉 Wishing you all the best in life. May God continue to bless youuuu. Enjoyyy your day atehhh🤍✨</p>
+      <p class="sender">- Ryan</p>
+    </div>
+    <div class="message-box">
+      <p>Happy Birthday Iwishhhh!!💗 22 ka na pero baby face pa rin😩 Goodluck sa mga goals and dreams mo in life, i know maaabot mo lahat. Don’t forget to thank the Lord, always. Enjoy your special day! lovelotsss💗</p>
+      <p class="sender">- Joi</p>
+    </div>
+    <div class="message-box">
+      <p>happy birthday irish!! thankful sa friendship na nabuo kahit halos simula 3rd yr tayo nagsama sama. stay jolly like me eme HAHAAHAHAH. love you so much irish😘😘</p>
+      <p class="sender">- Angge</p>
+    </div>
+    <div class="message-box">
+      <p>Happy Birthday, Irish! 🎉 Sana kayo ni Je ang endgame haha. Enjoy your day!🎂</p>
+      <p class="sender">- July</p>
+    </div>
+    <div class="message-box">
+      <p>Happy and Blessed Birthday Irish! Remember our promise? 70 years old? HAHAHAHAHA anyways I am glad na I got to know one of the beautiful ladies sa classroom, isang taong mabuti ang puso at natalino, I hope and pray na maabot mo ang mga pangarap mo, mas maging masaya ang puso mo at maka graduate tayo at makapasa ng boards ng sabay sabay. I hope you enjoy your day. God bless you 🥰 </p>
+      <p class="sender">- Aron</p>
+    </div>
+    <div class="message-box">
+      <p>Hello teh koo!! Happy birthdayyy!! Glad to know you more and more this past few sem, def enjoying our last semester together!! Always rooting for you, and always praying for your future endeavors, I know you can make it sa sipag mo pa naman na yan. Lezzg this last sem!! Ily!!😘</p>
+      <p class="sender">- Haids</p>
+    </div>
+    <div class="message-box">
+      <p>Henloo piii Irishh, Happy Birthdayy🥳🎉🎁<br><br>
+
+        Wishing you all the best in life, and also here to give thanks sa iyooo for being a great friend, for being one amongst yung circle of friends natinnn, super appreciated and super grateful ako sa inyoo😊<br><br>
+        
+        Last sem na natinn lahat so goodluck sa atinnn, mga ilang groupworks pa itatawid naten so ayunnn, tayo-tayo nanaman, HAHAHAHA.<br><br>
+        
+        Sana ma-enjoy mo ung day mooo, thank youuu and Happy Birthday ulittt</p>
+      <p class="sender">- Mycroft</p>
+    </div>
+    <div class="message-box">
+      <p>Happy Birthday, Irish! Wishing you a day full of new memories to remember. May this year bring you endless happiness and wonderful memories!</p>
+      <p class="sender">- Ceejay</p>
+    </div>
+    <div class="message-box">
+      <p>Happy Birthday, Irish! Wishing you a day full of new memories to remember. May this year bring you endless happiness and wonderful memories!</p>
+      <p class="sender">- Ceejay</p>
+    </div>
+  </div>
+</div>
+  
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large" id="footer"> 
+  <p><small>Tanda mo na, ate Irish.</small></p>
+</footer>
+
+</body>
+</html>
