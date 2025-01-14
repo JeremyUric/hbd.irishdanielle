@@ -168,7 +168,7 @@ function openTab(evt, tabName) {
   if (tabName === 'Irish') {
     if (!document.getElementById('birthdayContent').style.display || document.getElementById('birthdayContent').style.display === 'none') {
       alert('Tapusin mo muna questions :3');
-      location.reload(); // Refresh the page
+      document.getElementById('Birthday').style.display = "block"; // Go back to the "Secret" tab content
       return;
     }
     setTimeout(animateMessages, 7000); // Start animation after 7 seconds when "Friends" tab is opened
